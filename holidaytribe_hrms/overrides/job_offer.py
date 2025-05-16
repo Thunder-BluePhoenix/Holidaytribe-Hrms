@@ -1,9 +1,8 @@
 import frappe
 @frappe.whitelist()
-def update_joining_date(job_offer, new_date):
-    doc = frappe.get_doc("Job Offer", job_offer)
-    doc.custom_jo_expiry_date = new_date
-    doc.save()
+def update_joining_date(job_offer, new_expiry_date):
+    frappe.db.set_value("Job Offer", job_offer, "custom_jo_expiry_date", new_expiry_date)
+
 
 @frappe.whitelist()
 def rescind_offer(job_offer):

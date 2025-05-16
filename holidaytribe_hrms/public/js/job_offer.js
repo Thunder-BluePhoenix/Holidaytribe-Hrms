@@ -1,15 +1,14 @@
 frappe.ui.form.on('Job Offer', {
     refresh(frm) {
-        console.log("Job Offer Refreshed");
         if (!frm.is_new() && frm.doc.status !== "Accepted") {
             // Add buttons under "Actions" menu properly
-            frm.add_custom_button("Extend Joining Date", () => {
+            frm.add_custom_button("Extend Offer Expiry Date", () => {
                 let dialog = new frappe.ui.Dialog({
-                    title: "Extend Joining Date",
+                    title: "Extend Offer Expiry Date",
                     fields: [
                         {
-                            fieldname: "new_date",
-                            label: "New Joining Date",
+                            fieldname: "new_expiry_date",
+                            label: "New Expiry Date",
                             fieldtype: "Date",
                             reqd: 1
                         }
@@ -21,10 +20,10 @@ frappe.ui.form.on('Job Offer', {
                             method: "holidaytribe_hrms.overrides.job_offer.update_joining_date",
                             args: {
                                 job_offer: frm.doc.name,
-                                new_date: values.new_date
+                                new_expiry_date: values.new_expiry_date
                             },
                             callback: () => {
-                                frappe.msgprint("Joining date extended.");
+                                frappe.msgprint("Offer expiry date extended.");
                                 frm.reload_doc();
                             }
                         });
@@ -32,7 +31,7 @@ frappe.ui.form.on('Job Offer', {
                 });
                 dialog.show();
             }, "Actions");
-
+            if (!frm.is_new() && !["Accepted", "Rescinded"].includes(frm.doc.status)) {
             frm.add_custom_button("Rescind Offer", () => {
                 frappe.call({
                     method: "holidaytribe_hrms.overrides.job_offer.rescind_offer",
@@ -47,4 +46,5 @@ frappe.ui.form.on('Job Offer', {
             }, "Actions");
         }
     }
+}
 });
