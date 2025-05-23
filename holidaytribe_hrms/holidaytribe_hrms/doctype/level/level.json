@@ -1,6 +1,8 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
+ "autoname": "field:level_name",
  "creation": "2025-05-23 11:13:42.794343",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -11,15 +13,17 @@
   {
    "fieldname": "level_name",
    "fieldtype": "Data",
-   "label": "Level Name"
+   "label": "Level Name",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-23 11:14:09.101191",
+ "modified": "2025-05-23 11:55:11.435623",
  "modified_by": "Administrator",
  "module": "Holidaytribe Hrms",
  "name": "Level",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

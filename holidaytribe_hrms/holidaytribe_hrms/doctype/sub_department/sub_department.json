@@ -1,6 +1,8 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
+ "autoname": "field:sub_department_name",
  "creation": "2025-05-23 11:12:35.032535",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -14,7 +16,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Sub Department Name",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "department",
@@ -26,10 +29,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-23 11:13:30.894971",
+ "modified": "2025-05-23 11:55:45.568476",
  "modified_by": "Administrator",
  "module": "Holidaytribe Hrms",
  "name": "Sub Department",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
